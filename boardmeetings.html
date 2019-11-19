@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+    <title>Board Meeting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+</head>
+
+<body>
+<!-- Board meeting date, Purpose, Details -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Board meeting date</th>
+      <th scope="col">Purpose</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
+  {{if .Results }}
+  <tbody>
+  	{{range .Row}}
+    <tr>
+      <td>{{.BoardMeetingDate}}</td>
+      <td>{{.Purpose}}</td>
+      <td>{{.Details}}</td>
+    </tr>
+    {{end}}
+  </tbody>
+  {{else}}
+  <p> No records found</p>
+  {{end}}
+</table>
+</body>

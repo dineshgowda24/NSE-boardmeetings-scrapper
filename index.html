@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+    <title>Board Meeting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/getBoardMeetings.js"></script>
+</head>
+
+<body>
+
+ <div class="row">
+   <div class="text-center">
+	<form class="form-inline justify-content-center">
+	  <div class="form-group">
+	    <label for="comid">Company ID</label>
+	    <input type="text" class="form-control" id="comid" aria-describedby="comHelp" placeholder="Enter Company ID">
+	  </div>
+	  <button id="boardmeetingbutton" type="submit" class="btn btn-primary">Submit</button>
+	</form>
+   </div>
+  </div>
+  <div id="boardmeetingresults"></div>
+  <script>
+		
+	$("#boardmeetingbutton").click(function(e){
+		e.preventDefault();
+    	e.stopPropagation();
+		var company = $('#comid').val();  
+		$.ajax(
+  			{
+  				url: "boardmeetings", 
+  				type : "get",
+  				dataType: "html",
+  				data: {
+  					"Symbol":company
+  				},
+  				success: function(result){
+    				$('#boardmeetingresults').html(result);
+  		  		},
+  		  		error: function(){
+  		  			console.log("Here");
+  		  		}		
+  		});
+	});
+	</script>
+</body>
+</html>
